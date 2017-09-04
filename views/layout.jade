@@ -36,6 +36,7 @@ html
             $("#lblConnections").text(json.data[0].connections + ' connections');
             $("#lblBlockcount").text(json.data[0].blockcount + ' blocks');
             $("#lblX1").text(' ');
+            //$("#masterNodesCount").text(json.data[0].masternodesCount);
           }});
         }
         $('.block-last-next').tooltip({
@@ -127,6 +128,12 @@ html
                 a.navbar-link(href='/info')
                   span.glyphicon.glyphicon-info-sign
                   span.menu-text #{settings.locale.menu_api}
+
+    .col-md-12
+      .row.text-center
+        .col-md-2.col-sm-12.col-md-offset-5
+          img(src='#{settings.logo}', style='margin-top:-15px;height:128px;')
+
 
     .col-md-12
       .row.text-center
