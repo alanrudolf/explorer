@@ -4,7 +4,6 @@ var express = require('express')
   , locale = require('../lib/locale')
   , db = require('../lib/database')
   , lib = require('../lib/explorer')
-  , masternodes = require('../lib/masternodes')
   , qr = require('qr-image');
 
 function route_get_block(res, blockhash) {
@@ -280,13 +279,6 @@ router.get('/qr/:string', function(req, res) {
     res.type('png');
     address.pipe(res);
   }
-});
-
-router.get('/ext/masternodes', function(req, res) {
-  console.log(masternodes.getMasternodesCount());
-  //console.log(contagem);
-  console.log(masternodes.masternodesCount);
-  res.send(masternodes.getMasternodesCount());
 });
 
 router.get('/ext/summary', function(req, res) {
