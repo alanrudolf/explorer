@@ -17,7 +17,7 @@ dbString = dbString + '@' + settings.dbsettings.address;
 dbString = dbString + ':' + settings.dbsettings.port;
 dbString = dbString + '/' + settings.dbsettings.database;
 
-mongoose.connect(dbString, function(err) {
+mongoose.connection.openUri(dbString, function(err) {
   if (err) {
     console.log('Unable to connect to database: %s', dbString);
     console.log('Aborting');
@@ -50,3 +50,4 @@ mongoose.connect(dbString, function(err) {
     });
   }
 });
+mongoose.Promise = global.Promise;

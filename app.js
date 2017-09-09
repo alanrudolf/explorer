@@ -1,7 +1,7 @@
 var express = require('express')
   , path = require('path')
   , chaincoinapi = require('chaincoin-node-api')
-  , favicon = require('static-favicon')
+  , favicon = require('serve-favicon')
   , logger = require('morgan')
   , cookieParser = require('cookie-parser')
   , bodyParser = require('body-parser')
@@ -12,13 +12,13 @@ var express = require('express')
   , locale = require('./lib/locale')
   , request = require('request');
 
-var app = express();
+let app = express();
 
 // chaincoinapi
 chaincoinapi.setWalletDetails(settings.wallet);
 if (settings.heavy != true) {
   chaincoinapi.setAccess('only', ['getinfo', 'getnetworkhashps', 'getmininginfo','getdifficulty', 'getconnectioncount',
-  'getmasternodecount', 'getmasternodecountonline', 'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction', 
+  'getmasternodecount', 'getmasternodecountonline', 'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction',
   'getpeerinfo', 'gettxoutsetinfo']);
 } else {
   // enable additional heavy api calls
@@ -34,18 +34,20 @@ if (settings.heavy != true) {
     getmaxmoney - Returns the maximum possible money supply.
   */
   chaincoinapi.setAccess('only', ['getinfo', 'getstakinginfo', 'getnetworkhashps', 'getdifficulty', 'getconnectioncount',
-    'getmasternodecount', 'getmasternodecountonline', 'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction', 
+    'getmasternodecount', 'getmasternodecountonline', 'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction',
     'getmaxmoney', 'getvote', 'getmaxvote', 'getphase', 'getreward', 'getnextrewardestimate', 'getnextrewardwhenstr',
     'getnextrewardwhensec', 'getsupply', 'gettxoutsetinfo']);
 }
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(favicon(path.join(__dirname, settings.favicon)));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

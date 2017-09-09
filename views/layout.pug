@@ -2,7 +2,7 @@ doctype html
 html
   head
     title= settings.title
-    link(rel='stylesheet', href='/themes/#{settings.theme}/bootstrap.min.css')
+    link(rel='stylesheet', href='/themes/' + settings.theme + '/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/jqplot/jquery.jqplot.css')
     link(rel='stylesheet', href='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css')
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
@@ -36,7 +36,6 @@ html
             $("#lblConnections").text(json.data[0].connections + ' connections');
             $("#lblBlockcount").text(json.data[0].blockcount + ' blocks');
             $("#lblX1").text(' ');
-            //$("#masterNodesCount").text(json.data[0].masternodesCount);
           }});
         }
         $('.block-last-next').tooltip({
@@ -120,7 +119,7 @@ html
                   span.menu-text #{settings.locale.menu_richlist}
             if settings.display.markets == true
               li#markets
-                a.navbar-link.loading(href='/markets/#{settings.markets.default}')
+                a.navbar-link.loading(href='/markets/' + settings.markets.default)
                   span.fa.fa-line-chart
                   span.menu-text #{settings.locale.menu_markets}
             if settings.display.api == true
@@ -128,12 +127,6 @@ html
                 a.navbar-link(href='/info')
                   span.glyphicon.glyphicon-info-sign
                   span.menu-text #{settings.locale.menu_api}
-
-    .col-md-12
-      .row.text-center
-        .col-md-2.col-sm-12.col-md-offset-5
-          img(src='#{settings.logo}', style='margin-top:-15px;height:128px;')
-
 
     .col-md-12
       .row.text-center
@@ -153,23 +146,27 @@ html
               else if settings.nethash_units == 'H'
                 strong #{settings.locale.network} (H/s)
             .panel-body
-              if settings.index.difficulty == 'Hybrid'
-               label#hashrate -
-               <br>
-               label#lblX1
-              else
-               label#hashrate -
+              #hashratepanel
+                span.glyphicon.fa.fa-gears
+                if settings.index.difficulty == 'Hybrid'
+                  label#hashrate -
+                  <br>
+                  label#lblX1
+                else
+                  label#hashrate -
         .col-md-2
           .panel.panel-default.hidden-sm.hidden-xs
             .panel-heading
               strong #{settings.locale.difficulty}
             .panel-body
-              if settings.index.difficulty == 'Hybrid'
-               label#difficulty -
-               <br>
-               label#difficultyHybrid -
-              else
-               label#difficulty -
+              #difficultypanel
+                span.glyphicon.fa.fa-sliders
+                if settings.index.difficulty == 'Hybrid'
+                  label#difficulty -
+                  <br>
+                  label#difficultyHybrid -
+                else
+                  label#difficulty -
         .col-md-2
          .panel.panel-default.hidden-sm.hidden-xs
             .panel-heading
@@ -178,7 +175,7 @@ html
               #masternodepanel
                 span.glyphicon.fa.fa-exclamation-triangle
                 label#masternodeCountOffline -
-                label &nbsp;&#x2F;&nbsp;        
+                label &nbsp;&#x2F;&nbsp;
                 label#masternodeCountOnline -
                 span.glyphicon.fa.fa-check-circle
         .col-md-2
@@ -186,29 +183,32 @@ html
             .panel-heading
               strong #{settings.locale.ex_supply} (#{settings.symbol})
             .panel-body
-              if settings.index.difficulty == 'Hybrid'
-               label#supply -
-               <br>
-               label#lblX1
-              else
-               label#supply -
+              #supplypanel
+                span.glyphicon.fa.fa-pie-chart
+                if settings.index.difficulty == 'Hybrid'
+                  label#supply -
+                  <br>
+                  label#lblX1
+                else
+                  label#supply -
         .col-md-2
           .panel.panel-default.hidden-sm.hidden-xs
             .panel-heading
               strong #{settings.markets.exchange} Price
             .panel-body
-              if settings.index.difficulty == 'Hybrid'
-               label#lastPrice -
-               <br>
-               label#lblX1
-              else
-               label#lastPrice -
-
+              #pricepanel
+                span.glyphicon.fa.fa-rocket
+                if settings.index.difficulty == 'Hybrid'
+                  label#lastPrice -
+                  <br>
+                  label#lblX1
+                else
+                  label#lastPrice -
 
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')
         form.form-inline(method='post', action='/search')
           #index-search.form-group
-            input.form-control(type='text', name='search', placeholder='#{settings.locale.ex_search_message}', style='min-width:80%;margin-right:5px;')
+            input.form-control(type='text', name='search', placeholder=settings.locale.ex_search_message, style='min-width:80%;margin-right:5px;')
             button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
     block content
     .navbar.navbar-default.navbar-fixed-bottom.hidden-xs
