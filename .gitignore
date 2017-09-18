@@ -30,3 +30,6 @@ settings.json
 *.ico
 *.png
 
+
+#Temp folder
+tmp/

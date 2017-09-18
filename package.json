@@ -1,6 +1,6 @@
 {
   "name": "explorer",
-  "version": "1.7.0",
+  "version": "1.6.2",
   "private": true,
   "scripts": {
     "start": "node --stack-size=10000 ./bin/cluster",
@@ -8,22 +8,22 @@
     "test": "node ./node_modules/jasmine/bin/jasmine.js"
   },
   "dependencies": {
-    "express": "~4.2.0",
-    "static-favicon": "~1.0.0",
-    "morgan": "~1.0.0",
-    "cookie-parser": "~1.0.1",
-    "body-parser": "~1.0.0",
-    "debug": "~0.7.4",
-    "jade": "~1.3.0",
-    "chaincoin-node-api": "1.0.1",
-    "request": "2.74.0",
-    "jsonminify": "0.2.3",
-    "mongodb": "2.0.45",
-    "mongoose": "4.1.10",
-    "markdown-js": "0.0.3",
-    "qr-image": "~2.0.0"
+    "body-parser": "^1.18.1",
+    "chaincoin-node-api": "^1.0.1",
+    "cookie-parser": "^1.4.3",
+    "debug": "^3.0.1",
+    "express": "^4.15.4",
+    "jsonminify": "^0.4.1",
+    "jstransformer-markdown-it": "^2.0.0",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.11",
+    "morgan": "^1.8.2",
+    "pug": "^2.0.0-rc.4",
+    "qr-image": "^3.2.0",
+    "request": "^2.81.0",
+    "serve-favicon": "^2.4.4"
   },
   "devDependencies": {
-    "jasmine": "~2.1.0"
+    "jasmine": "~2.8.0"
   }
 }

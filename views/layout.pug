@@ -2,7 +2,7 @@ doctype html
 html
   head
     title= settings.title
-    link(rel='stylesheet', href='/themes/#{settings.theme}/bootstrap.min.css')
+    link(rel='stylesheet', href='/themes/' + settings.theme + '/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/jqplot/jquery.jqplot.css')
     link(rel='stylesheet', href='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css')
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
@@ -119,7 +119,7 @@ html
                   span.menu-text #{settings.locale.menu_richlist}
             if settings.display.markets == true
               li#markets
-                a.navbar-link.loading(href='/markets/#{settings.markets.default}')
+                a.navbar-link.loading(href='/markets/' + settings.markets.default)
                   span.fa.fa-line-chart
                   span.menu-text #{settings.locale.menu_markets}
             if settings.display.api == true
@@ -175,7 +175,7 @@ html
               #masternodepanel
                 span.glyphicon.fa.fa-exclamation-triangle
                 label#masternodeCountOffline -
-                label &nbsp;&#x2F;&nbsp;        
+                label &nbsp;&#x2F;&nbsp;
                 label#masternodeCountOnline -
                 span.glyphicon.fa.fa-check-circle
         .col-md-2
@@ -203,12 +203,12 @@ html
                   <br>
                   label#lblX1
                 else
-                  label#lastPrice -                
+                  label#lastPrice -
 
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')
         form.form-inline(method='post', action='/search')
           #index-search.form-group
-            input.form-control(type='text', name='search', placeholder='#{settings.locale.ex_search_message}', style='min-width:80%;margin-right:5px;')
+            input.form-control(type='text', name='search', placeholder=settings.locale.ex_search_message, style='min-width:80%;margin-right:5px;')
             button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
     block content
     .navbar.navbar-default.navbar-fixed-bottom.hidden-xs

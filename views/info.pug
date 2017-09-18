@@ -1,0 +1,230 @@
+extends layout
+
+block content
+  .col-md-12.col-xs-12
+    .panel.panel-default
+      .panel-heading
+        strong #{settings.locale.api_title}
+      .panel-body
+        img(src=settings.logo, style='margin:0;height:128px;')
+
+        p #{settings.locale.api_title}
+
+          hr
+
+          h3 #{settings.locale.api_calls}
+          p Return data from chaincoind
+
+          ul
+            li
+              strong getdifficulty
+              p
+                i #{settings.locale.api_getdifficulty}
+                br
+                a(href='//' + address+'/api/getdifficulty', target="_blank")
+                  span #{address}/api/getdifficulty
+
+            li
+              strong getconnectioncount
+              p
+                i #{settings.locale.api_getconnectioncount}
+                br
+                a(href='//' + address+'/api/getconnectioncount', target="_blank")
+                  span #{address}/api/getconnectioncount
+
+            li
+              strong getmasternodecount
+              p
+                i #{settings.locale.api_getmasternodecount}
+                br
+                a(href='//' + address+'/api/getmasternodecount', target="_blank")
+                  span #{address}/api/getmasternodecount
+
+            li
+              strong getblockcount
+              p
+                i #{settings.locale.api_getblockcount}
+                br
+                a(href='//' + address+'/api/getblockcount', target="_blank")
+                  span #{address}/api/getblockcount
+
+            li
+              strong getblockhash [index]
+              p
+                i #{settings.locale.api_getblockhash}
+                br
+                a(href='//' + address+'/api/getblockhash?index='+hashes.blockindex, target="_blank")
+                  span #{address}/api/getblockhash?index=#{hashes.blockindex}
+
+            li
+              strong getblock [hash]
+              p
+                i #{settings.locale.api_getblock}
+                br
+                a(href='//' + address+'/api/getblock?index='+hashes.blockhash, target="_blank")
+                  span #{address}/api/getblock?index=#{hashes.blockhash}
+
+            li
+              strong getrawtransaction [txid] [decrypt]
+              p
+                i #{settings.locale.api_getrawtransaction}
+                br
+                a(href='//' + address+'/api/getrawtransaction?index='+hashes.txhash+'&decrypt=0', target="_blank")
+                  span #{address}/api/getrawtransaction?index=#{hashes.txhash}&decrypt=0
+                br
+                a(href='//' + address+'/api/getrawtransaction?index='+hashes.txhash+'&decrypt=1', target="_blank")
+                  span #{address}/api/getrawtransaction?index=#{hashes.txhash}&decrypt=1
+
+            if settings.index.show_hashrate == true
+              li
+                strong getnetworkhashps
+                p
+                  i #{settings.locale.api_getnetworkhashps}
+                  br
+                  a(href='//' + address+'/api/getnetworkhashps', target="_blank")
+                    span #{address}/api/getnetworkhashps
+
+            if settings.heavy == true
+              li
+                strong getmaxmoney
+                p
+                  i #{settings.locale.api_getmaxmoney}
+                  br
+                  a(href='//' + address+'/api/getmaxmoney', target="_blank")
+                    span #{address}/api/getmaxmoney
+
+              li
+                strong getmaxvote
+                p
+                  i #{settings.locale.api_getmaxvote}
+                  br
+                  a(href='//' + address+'/api/getmaxvote', target="_blank")
+                    span #{address}/api/getmaxvote
+
+              li
+                strong getvote
+                p
+                  i #{settings.locale.api_getvote}
+                  br
+                  a(href='//' + address+'/api/getvote', target="_blank")
+                    span #{address}/api/getvote
+
+              li
+                strong getphase
+                p
+                  i #{settings.locale.api_getphase}
+                  br
+                  a(href='//' + address+'/api/getphase', target="_blank")
+                    span #{address}/api/getphase
+
+              li
+                strong getreward
+                p
+                  i #{settings.locale.api_getreward}
+                  br
+                  a(href='//' + address+'/api/getreward', target="_blank")
+                    span #{address}/api/getreward
+
+              li
+                strong getsupply
+                p
+                  i #{settings.locale.api_getsupply}
+                  br
+                  a(href='//' + address+'/api/getsupply', target="_blank")
+                    span #{address}/api/getsupply
+
+              li
+                strong getnextrewardestimate
+                p
+                  i #{settings.locale.api_getnextrewardestimate}
+                  br
+                  a(href='//' + address+'/api/getnextrewardestimate', target="_blank")
+                    span #{address}/api/getnextrewardestimate
+
+              li
+                strong getnextrewardwhenstr
+                p
+                  i #{settings.locale.api_getnextrewardwhenstr}
+                  br
+                  a(href='//' + address+'/api/getnextrewardwhenstr', target="_blank")
+                    span #{address}/api/getnextrewardwhenstr
+
+        hr
+
+        h3 Extended API
+        p
+          i Return data from local indexes
+
+        ul
+          li
+            strong getmoneysupply
+            p
+              i Returns current money supply
+              br
+              a(href='//' + address+ '/ext/getmoneysupply', target="_blank")
+                span #{address}/ext/getmoneysupply
+
+          li
+            strong getdistribution
+            p
+              i Returns wealth distribution stats
+              br
+              a(href='//' + address+ '/ext/getdistribution', target="_blank")
+                span #{address}/ext/getdistribution
+
+          li
+            strong getaddress (/ext/getaddress/hash)
+            p
+              i Returns information for given address
+              br
+              a(href='//' + address+ '/ext/getaddress/' + hashes.address, target="_blank")
+                span #{address}/ext/getaddress/#{hashes.address}
+
+          li
+            strong getbalance (/ext/getbalance/hash)
+            p
+              i Returns current balance of given address
+              br
+              a(href='//' + address+ '/ext/getbalance/' + hashes.address, target="_blank")
+                span #{address}/ext/getbalance/#{hashes.address}
+
+          li
+            strong getlasttxs (/ext/getlasttxs/count/min)
+            p
+              i Returns last [count] transactions greater than [min]
+              Note: returned values are in satoshis
+              br
+              a(href='//' + address+ '/ext/getlasttxs/10/100', target="_blank")
+                span #{address}/ext/getlasttxs/10/100
+
+        hr
+        h3 Linking (GET)
+        p
+          i Linking to the block explorer
+
+        ul
+          li
+            strong transaction (/tx/txid)
+            p
+              a(href='//' + address+ '/tx/' + hashes.txhash, target="_blank")
+                span #{address}/tx/#{hashes.txhash}
+
+          li
+            strong block (/block/hash)
+            p
+              a(href='//' + address+ '/block/' + hashes.blockhash, target="_blank")
+                span #{address}/block/#{hashes.blockhash}
+
+          li
+            strong address (/address/hash)
+            p
+              a(href='//' + address+ '/address/' + hashes.address, target="_blank")
+                span #{address}/address/#{hashes.address}
+
+          li
+            strong qrcode (/qr/hash)
+            p
+              a(href='//' + address+ '/qr/' + hashes.address, target="_blank")
+                span #{address}/qr/#{hashes.address}
+
+    .footer-padding

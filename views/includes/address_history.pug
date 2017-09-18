@@ -7,13 +7,13 @@ tbody
   each tx in txs
     - var time = format_unixtime(tx.timestamp)
     tr
-      td.hidden-xs #{time} 
+      td.hidden-xs #{time}
       td.hidden-xs
-        a(href='/tx/#{tx.txid}') #{tx.txid}
+        a(href='/tx/'+ tx.txid) #{tx.txid}
       - var done = false
       - var out = 0
       - var vin = 0
-      each r in tx.vout 
+      each r in tx.vout
         if r.addresses == address.a_id
           - out = r.amount
       each s in tx.vin
