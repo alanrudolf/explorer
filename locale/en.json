@@ -136,6 +136,7 @@
     "cryptsy": "Cryptsy",
     "cryptopia": "Cryptopia",
     "ccex": "C-Cex",
+    "coinexchange": "CoinExchange",
 
     // Heavy rewards view
     "heavy_title": "Reward/voting information",
