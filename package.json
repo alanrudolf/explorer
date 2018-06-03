@@ -15,7 +15,7 @@
     "body-parser": "~1.0.0",
     "debug": "~0.7.4",
     "jade": "~1.3.0",
-    "chaincoin-node-api": "1.0.3",
+    "chaincoin-node-api": "1.0.5",
     "request": "2.74.0",
     "jsonminify": "0.2.3",
     "mongodb": "2.0.45",
