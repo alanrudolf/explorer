@@ -7,7 +7,7 @@ This project is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer
 
 ### See it in action
 
-*  [explorer.chaincoin.org](https://explorer.chaincoin.org)
+*  [http://54.37.18.226:3001/](http://54.37.18.226:3001/)
 
 
 ### Requires
@@ -36,11 +36,14 @@ Create user with read/write access:
 
 ### Get the source
 
-    git clone https://github.com/suprnurd/ciquidus explorer
+    git clone https://github.com/jayanh/ciquidus explorer
 
 ### Install node modules
 
     cd explorer && npm install --production
+    
+    Note: if you get error with /lib/kerberosgss
+    do sudo apt-get install libkrb5-d
 
 ### Configure
 
@@ -51,6 +54,10 @@ Create user with read/write access:
 ### Start Explorer
 
     npm start
+    
+    To use forever to start (run in directory of explorer):
+    npm install forever -g
+    forever start -c "npm start" ./
 
 *note: mongod must be running to start the explorer*
 
@@ -67,6 +74,8 @@ To stop the cluster you can use
 sync.js (located in scripts/) is used for updating the local databases. This script must be called from the explorers root directory.
 
     Usage: node scripts/sync.js [database] [mode]
+    Example: node scripts/sync.js index reindex
+             node scripts/sync.js index update
 
     database: (required)
     index [mode] Main index: coin info/stats, transactions & addresses
@@ -104,8 +113,7 @@ The wallet connected to Ciquidus must be running with atleast the following flag
 
 ### Donate
     
-    CHC: CLkWg5YSLod772uLzsFRxHgHiWVGAJSezm
-    BTC: 1J8Chi5teDJrvBtSuQhioNCHfTNBCcCrPx
+    BTC: 1EXZTqbmg2iHCTYtmibnT8qGvhmExVCu8e
 
 ### Known Issues
 
