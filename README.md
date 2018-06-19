@@ -7,7 +7,7 @@ This project is a fork of [Iquidus Explorer](https://github.com/iquidus/explorer
 
 ### See it in action
 
-*  [http://54.37.18.225:3001/](http://54.37.18.225:3001/)
+*  [http://54.37.18.226:3001/](http://54.37.18.226:3001/)
 
 
 ### Requires
