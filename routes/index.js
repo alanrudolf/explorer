@@ -303,7 +303,7 @@ router.get('/ext/summary', function(req, res) {
                 if (hashrate == 'There was an error. Check your console.') {
                   hashrate = 0;
                 }
-                var masternodesoffline = Math.floor(masternodestotal - masternodesonline);
+                var masternodesoffline = Math.floor(masternodestotal.total - masternodestotal.enabled);
                 res.send({ data: [{
                   difficulty: difficulty,
                   difficultyHybrid: difficultyHybrid,
@@ -311,7 +311,7 @@ router.get('/ext/summary', function(req, res) {
                   hashrate: hashrate,
                   lastPrice: stats.last_price,
                   connections: connections,
-                  masternodeCountOnline: masternodesonline,
+                  masternodeCountOnline: masternodestotal.enabled,
                   masternodeCountOffline: masternodesoffline,
                   blockcount: blockcount
                 }]});
