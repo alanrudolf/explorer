@@ -90,7 +90,7 @@ app.use('/ext/getbalance/:hash', function(req,res){
 app.use('/ext/gettotalreceived/:hash', function(req,res){
   db.get_address(req.param('hash'), function(address){
     if (address) {
-      res.send((address.received / 100000000));
+      res.send(address.received / 100000000);
     } else {
       res.send({ error: 'address not found.', hash: req.param('hash')})
     }
@@ -101,7 +101,7 @@ app.use('/ext/gettotalreceived/:hash', function(req,res){
 app.use('/ext/gettotalsent/:hash', function(req,res){
   db.get_address(req.param('hash'), function(address){
     if (address) {
-      res.send((address.sent / 100000000));
+      res.send(address.sent / 100000000);
     } else {
       res.send({ error: 'address not found.', hash: req.param('hash')})
     }
