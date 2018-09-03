@@ -85,6 +85,29 @@ app.use('/ext/getbalance/:hash', function(req,res){
   });
 });
 
+// light endpoint for heavy usage of received and sent coins added by LucaPaterlini (founder of Crowdcoin) support@crowdcoin.site
+
+app.use('/ext/gettotalreceived/:hash', function(req,res){
+  db.get_address(req.param('hash'), function(address){
+    if (address) {
+      res.send(address.received / 100000000);
+    } else {
+      res.send({ error: 'address not found.', hash: req.param('hash')})
+    }
+  });
+});
+
+
+app.use('/ext/gettotalsent/:hash', function(req,res){
+  db.get_address(req.param('hash'), function(address){
+    if (address) {
+      res.send(address.sent / 100000000);
+    } else {
+      res.send({ error: 'address not found.', hash: req.param('hash')})
+    }
+  });
+});
+
 app.use('/ext/getdistribution', function(req,res){
   db.get_richlist(settings.coin, function(richlist){
     db.get_stats(settings.coin, function(stats){
